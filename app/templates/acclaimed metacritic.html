@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Universally acclaimed reviews from metacritic</h1>
+    <h2>Count of reviews: {{ reviews.count() }}</h2>
+     {% include 'metacritic table.html' %}
+{% endblock%}

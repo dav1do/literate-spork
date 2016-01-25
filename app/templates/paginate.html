@@ -1,0 +1,32 @@
+
+{% block content %}
+<nav>
+<ul class="pagination">
+    <li>
+      {% if posts.has_prev %}
+        <a href="{{ url_for('index', page=posts.prev_num) }}" aria-label="Newer posts">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+        {% endif %}
+    </li>
+    {%- for page in posts.iter_pages() %}
+    {% if page %}
+      {% if page != posts.page %}
+        <li><a href="{{ url_for('index', page=page) }}">{{ page }}</a></li>
+      {% elif page == posts.page %}
+        <li class="active"><a href="#">{{ page }} <span class="sr-only">(current)</span></a></li>
+    {% endif %}
+      {% else %}
+    <li><span class="ellipsis">...</span></li>
+      {% endif %}
+  {% endfor %}
+    <li>
+        {% if posts.has_next %}
+        <a href="{{ url_for('index', page=posts.next_num) }}" aria-label="Older posts">
+        <span aria-hidden="true">&raquo;</span>
+        </a>
+        {% endif %}
+    </li>
+  </ul>
+</nav>
+{% endblock %}

@@ -1,0 +1,62 @@
+<!-- extend from base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Enter pitchfork search criteria</h1>
+<h2> All fields are optional</h2>
+<form action="" method="post" name="pitchfork_search" class="form-horizontal">
+    {{ form.hidden_tag() }}
+    <div class="row">
+        <div class="col-xs-3">
+        {{form.low_score.label }} {{ form.low_score(class_="form-control", placeholder=0) }} <br>
+        {% for error in form.low_score.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}<br>
+        </div>
+        <div class="col-xs-3">
+            {{ form.high_score.label }} {{ form.high_score(class_="form-control", placeholder=10) }} <br>
+            {% for error in form.high_score.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}<br>
+        </div>
+</div>
+    <br>
+    <div class="row">
+        <div class="col-xs-3">
+            {{ form.artist.label }} {{ form.artist(class_="form-control")  }} <br>
+            {% for error in form.artist.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}<br>
+        </div>
+        <div class="col-xs-3">
+            {{ form.album.label }} {{ form.album(class_="form-control")  }}</p>
+            {% for error in form.album.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}<br>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-xs-3">
+            {{ form.reviewer.label }} {{ form.reviewer(class_="form-control") }}
+            {% for error in form.reviewer.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}<br>
+        </div>
+        <div class="col-xs-3">
+            {{ form.accolades.label }} {{ form.accolades(class_="form-control") }}
+            {% for error in form.accolades.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}<br>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-3">
+            {{ form.year.label }} {{ form.year(class_="form-control") }}
+        </div>
+        <br>
+        <input class="btn btn-primary input-lg" type="submit" value="Search">
+    </div>
+</form>
+{% endblock %}

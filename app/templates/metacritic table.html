@@ -1,0 +1,22 @@
+{% block content %}
+        <table id="metacritic" class="table table-striped">
+            <thead>
+                <th>Review Date</th>
+                <th>Album</th>
+                <th>Artist</th>
+                <th>Critic Score</th>
+                <th>User Score</th>
+            </thead>
+            <tbody>
+            {% for r in reviews %}
+            <tr>
+                <td>{{ r.review_date.date() }}</td>
+                <td>{{r.album}}</a></td>
+                <td>{{r.artist}}</td>
+                <td>{{r.critic_score}}</td>
+                <td>{{r.user_score}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+{% endblock%}

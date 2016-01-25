@@ -1,0 +1,26 @@
+{% block content %}
+        <table id="pitchfork" class="table table-striped">
+            <thead>
+                <th>Review Date</th>
+                <th>Album</th>
+                <th>Artist</th>
+                <th>Score</th>
+                <th>Accolades</th>
+                <th>Reviewer</th>
+                <th>Year</th>
+            </thead>
+            <tbody>
+            {% for r in reviews %}
+            <tr>
+                <td>{{ r.review_date.date() }}</td>
+                <td><a href={{ r.review_url }}>{{r.album}}</a></td>
+                <td>{{r.artist}}</td>
+                <td>{{r.score}}</td>
+                <td>{{r.accolades}}</td>
+                <td>{{r.reviewer}}</td>
+                <td>{{r.year}}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+{% endblock %}

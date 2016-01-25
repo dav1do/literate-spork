@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Best New Music!</h1>
+    <h2>Count of all time BNM: {{ reviews.count() }}</h2>
+    {% include 'pitchfork table.html' %}
+{% endblock %}

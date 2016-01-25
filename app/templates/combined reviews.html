@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+  <div style="float:left;"><h1>Metacritic reviews</h1></div>
+    <div style="float:right;"><h1>Pitchfork reviews</h1></div>
+    <table border="1" style="border-collapse: separate">
+        <td>
+            {% set reviews = metacritic %}
+            {% include 'metacritic table.html' %}
+        </td>
+        <td>
+            {% set reviews = pitchfork %}
+            {% include 'pitchfork table.html' %}
+        </td>
+    </table>
+{% endblock %}

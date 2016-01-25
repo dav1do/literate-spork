@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+{% if not g.standalone %}
+  <h1>All Pitchfork reviews</h1>
+{% endif %}
+{% include 'pitchfork table.html' %}
+{% endblock %}

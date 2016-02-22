@@ -10,7 +10,7 @@ from flask import *
 # from utils import *
 # from models import *
 
-from app import views, models
+from app import views, models, forms
 from app.models import *
 
 os.environ['PYTHONINSPECT'] = 'True'

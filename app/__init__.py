@@ -19,5 +19,9 @@ def shutdown_session(exception=None):
 
 # todo implement bootstrap formatting
 # todo make combined reviews format nicely
+# todo metacritc v pitchfork:
+#   top 10 per year for each
+#   which metacritic are biggest user vs critic difference
+#   which albums do metacritic and pitchfork agree/disagree on
 # todo deploy it
 # http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xvii-deployment-on-linux-even-on-the-raspberry-pi

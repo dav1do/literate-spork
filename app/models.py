@@ -1,12 +1,15 @@
+import pandas as pd
+import numpy as np
 from collections import OrderedDict
-from sqlalchemy import and_
+
+from sqlalchemy import and_, func
+
 from database import Base
 
 
 class PitchforkReviews(Base):
     """"""
     __table__ = Base.metadata.tables['reviews']
-    __searchable__ = ['artist', 'album']
 
     @staticmethod
     def get_best_new_music():
@@ -81,6 +84,15 @@ class PitchforkReviews(Base):
         if r_reviewer:
             reviews = reviews.intersect(r_reviewer)
         return reviews
+
+    @staticmethod
+    def get_reviewers_graph():
+        reviewer = PitchforkReviews.query.with_entities(func.count(PitchforkReviews.reviewer).label('count'),
+                                                        PitchforkReviews.reviewer).\
+            order_by(func.count(PitchforkReviews.reviewer).desc()).\
+            group_by(PitchforkReviews.reviewer).all()
+        d = {r: c for c, r in reviewer}
+        return reviewer, d
 
     """
     ===================================

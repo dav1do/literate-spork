@@ -1,5 +1,47 @@
 {% extends "base.html" %}
 {% block content %}
+<script type="text/javascript">
+
+$jq = jQuery.noConflict();
+
+console.log($)
+
+var dataDeferred = getReviewerData();
+
+$jq.when( dataDeferred  ).done( function( data ) {
+    console.log("The data is: " + data);
+    console.log("here is a new line");
+});
+
+jQuery(document).ready(function() {
+    var buttons = jQuery("button")
+    if ( buttons.length ) {
+        $jq("button").html("hello <strong>dude</strong>")
+        }
+    buttons.on("click", function() { buttons.html("This is a button") })
+    });
+
+
+  $jq(function() {
+    $jq('a#calculate').bind('click', function() {
+      $jq.getJSON(getReviewerData(), {
+      }, function(data) {
+        $jq("#result").text(data.result);
+      });
+      return false;
+    });
+  });
+
+</script>
+
+<h1>jQuery Example</h1>
+   <span id=result>?</span>
+<p><a href=# id=calculate>calculate server side</a>
+
     <h1><a href="/best new music">Best new music</a></h1>
     <h1><a href="/metacritic">Metacritic</a></h1>
+<button>This is a button</button>
+
+<noscript>Your browser either does not support JavaScript, or has it turned off.</noscript>
+
 {% endblock%}
